@@ -1,0 +1,17 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.py[cod]
+build/
+dist/
+*$py.class
+*.egg-info
+.env
+.zed
+
+# Virtual environments
+.venv
+
+# Docker data
+postgres_data/
+storage/
