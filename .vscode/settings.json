@@ -1,0 +1,17 @@
+{
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.formatting.provider": "none",
+  "python.linting.enabled": true,
+  "python.linting.ruffEnabled": true,
+  "ruff.enable": true,
+  
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.ruff": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  }
+}
