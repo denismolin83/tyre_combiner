@@ -11,6 +11,7 @@ services:
             - "5432:5432"
         volumes:
             - ./postgres_data:/var/lib/postgresql/data
+            - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh # Инициализация базы данных NoCoDB
         healthcheck:
             test: ["CMD-SHELL", "pg_isready -U admin -d tyre_combiner_db"]
             interval: 5s
@@ -29,7 +30,7 @@ services:
         container_name: tyre_admin_panel
         restart: always
         environment:
-            NC_DB: "pg://db:5432?u=user&p=secret_password&d=nocodb"
+            NC_DB: "pg://db:5432?u=admin&p=secret_password&d=nocodb"
         ports:
             - "8080:8080"
         volumes:

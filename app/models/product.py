@@ -1,6 +1,6 @@
 import datetime
 from typing import Optional, List
-from sqlalchemy import ForeignKey, JSON, Integer, String, Boolean, Float, func
+from sqlalchemy import ForeignKey, JSON, Integer, String, Boolean, Float, func, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
@@ -36,6 +36,9 @@ class MasterProduct(Base):
 
 class RawProduct(Base):
     __tablename__ = "raw_products"
+    __table_args__ = (
+        # Уникальный индекс по source и external_id для предотвращения дубликатов
+        UniqueConstraint('source', 'external_id', name='_source_external_id_uc'),)
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     source: Mapped[str] = mapped_column(String(50), index=True)  # источник данных
