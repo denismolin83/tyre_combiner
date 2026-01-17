@@ -6,11 +6,16 @@ services:
         environment:
             POSTGRES_USER: admin
             POSTGRES_PASSWORD: secret_password
-            POSTGRES_DB: tyre_conbiner_db
+            POSTGRES_DB: tyre_combiner_db
         ports:
             - "5432:5432"
         volumes:
             - ./postgres_data:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U admin -d tyre_combiner_db"]
+            interval: 5s
+            timeout: 5s
+            retries: 5
 
     redis:
         image: redis:7-alpine
@@ -24,11 +29,16 @@ services:
         container_name: tyre_admin_panel
         restart: always
         environment:
-            NC_DB: "pg://db:5432?u=admin&p=secret_password&d=tyre_combiner_db"
+            NC_DB: "pg://db:5432?u=user&p=secret_password&d=nocodb"
         ports:
             - "8080:8080"
+        volumes:
+            - ./nocodb_data:/usr/app/data
         depends_on:
-            - db
+            db:
+                condition: service_healthy
 
-volumes:
-    postgres_data:
+networks:
+    default:
+        name: tyre_network
+        driver: bridge

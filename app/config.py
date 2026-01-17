@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     DB_PASSWORD: str = "secret_password"
     DB_HOST: str = "localhost"
     DB_PORT: int = 5432
-    DB_NAME: str = "tyre_conbiner_db"
+    DB_NAME: str = "tyre_combiner_db"
 
     # Ссылка на xml ЯМ Robotyre
     ROBOTYRE_XML_URL: str = "https://lk.robotyre.ru/Shop/MarketUnloadings/GetYandexMarketUnloading?customerId=48691"
