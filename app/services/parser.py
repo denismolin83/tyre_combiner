@@ -1,7 +1,8 @@
 import httpx
 from abc import ABC, abstractmethod
 from lxml import etree
-from app.schemas.product import RobotyreXMLItem, RawProductCreate
+from app.schemas.raw_product import RawProductCreate
+from app.schemas.robotyre import RobotyreXMLItem
 
 class BaseParser(ABC):
     def __init__(self, url: str, source_name: str):

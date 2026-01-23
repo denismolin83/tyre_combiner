@@ -1,5 +1,5 @@
 from app.models.product import RawProduct
-from app.schemas.product import RawProductCreate
+from app.schemas.raw_product import RawProductCreate
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert
 
