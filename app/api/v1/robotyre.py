@@ -8,11 +8,11 @@ from app.database import get_db
 from app.services.parser import RobotyreXMLParser
 from app.services.storage import StorageService
 
-router = APIRouter(prefix="/imports", tags=["imports"])
+router = APIRouter(prefix="/robotyre", tags=["Robotyre"])
 
 
-@router.post("/robotyre_ym")
-async def import_robotyre_ym(
+@router.post("/sync")
+async def sync_robotyre_ym(
     background_tasks: BackgroundTasks, db: AsyncSession = Depends(get_db)
 ):
     """Импорт данных из Robotyre Yandex Market фида"""

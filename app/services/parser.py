@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 import httpx
 from lxml import etree
 
-from app.schemas.raw_product import RawProductCreate
-from app.schemas.robotyre import RobotyreXMLItem
+from ..schemas.raw_product import RawProductCreate
+from ..schemas.robotyre import RobotyreXMLItem
 
 
 class BaseParser(ABC):
@@ -19,7 +19,7 @@ class BaseParser(ABC):
 
     async def _download(self) -> bytes:
         """Загружает данные по URL асинхронно"""
-        async with httpx.AsyncClient(timeout=120.0) as client:
+        async with httpx.AsyncClient(timeout=120.0, follow_redirects=True) as client:
             response = await client.get(self.url)
             response.raise_for_status()
             return response.content

@@ -1,8 +1,11 @@
+from typing import Dict, List, Optional
+
 from pydantic import BaseModel, Field, HttpUrl
-from typing import Optional, Dict, List
+
 
 class RobotyreXMLItem(BaseModel):
     """Схема для элемента из XML от Robotyre"""
+
     id: str
     name: str
     vendor: Optional[str] = None

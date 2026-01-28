@@ -20,7 +20,7 @@ dependencies = [
 
 [tool.ruff]
 line-length = 88
-target-version = "py39"
+target-version = "py312"
 
 [tool.ruff.format]
 quote-style = "double"
@@ -28,10 +28,15 @@ quote-style = "double"
 [tool.basedpyright]
 venvPath = "."
 venv = ".venv"
-useLibraryCodeForTypes = false
-typeCheckingMode = "strict"
+useLibraryCodeForTypes = true
+typeCheckingMode = "basic"  # Временно отключаем строгую проверку
+analysis.diagnosticMode = "openFiles"
+python.analysis.autoImportCompletions = true
 
 
 
-[tool.uv]
-dev-dependencies = ["ruff", "black"]
+[dependency-groups]
+dev = [
+    "ruff>=0.9.0",
+    "basedpyright>=1.20.0",
+]

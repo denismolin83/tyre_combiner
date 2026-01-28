@@ -1,6 +1,6 @@
 {
   "venvPath": ".",
   "venv": ".venv",
-  "useLibraryCodeForTypes": false,
-  "pythonVersion": "3.12"
+  "useLibraryCodeForTypes": true,
+  "pythonVersion": "3.12",
 }
